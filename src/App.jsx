@@ -11,6 +11,9 @@ function App() {
 
   const [taskInput, setTaskInput] = useState("");
    
+  useEffect(() => {
+    localStorage.setItem("kanban_tasks", JSON.stringify(tasks));
+  }, [tasks]);
   const handleAddTask = (e) =>{
     e.preventDefault();
     
