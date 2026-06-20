@@ -2,9 +2,12 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [tasks, setTasks] = useState([
-    { id:1, title: "learn react state", status: "todo"}
-  ]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("kanban_tasks");
+    return savedTasks ? JSON.parse(savedTasks) : [
+      { id: 1, title: "learn react state", status: "todo" } // Default fallback
+    ];
+  });
 
   const [taskInput, setTaskInput] = useState("");
    
